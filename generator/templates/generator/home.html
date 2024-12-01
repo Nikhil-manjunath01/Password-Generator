@@ -1,0 +1,166 @@
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        background-color: #121212;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+        color: #fff;
+    }
+
+    /* Background with 3D Objects */
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+    }
+
+    .shape {
+        position: absolute;
+        border-radius: 50%;
+        background: linear-gradient(145deg, #f5b041, transparent);
+        animation: float 10s infinite ease-in-out;
+    }
+
+    .shape:nth-child(1) {
+        width: 300px;
+        height: 300px;
+        top: 10%;
+        left: 20%;
+        animation-duration: 8s;
+    }
+
+    .shape:nth-child(2) {
+        width: 200px;
+        height: 200px;
+        top: 50%;
+        left: 70%;
+        animation-duration: 12s;
+    }
+
+    .shape:nth-child(3) {
+        width: 400px;
+        height: 400px;
+        top: 30%;
+        left: 40%;
+        animation-duration: 15s;
+    }
+
+    /* Floating Animation */
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0) translateX(0) scale(1);
+        }
+        50% {
+            transform: translateY(-20px) translateX(20px) scale(1.1);
+        }
+    }
+
+    /* Form Container */
+    form {
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(255, 255, 255, 0.1);
+        text-align: center;
+        z-index: 10; /* Keeps form above background shapes */
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #f5b041;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    select {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #f5b041;
+        outline: none;
+        width: 100%;
+        margin-bottom: 15px;
+        background: #000;
+        color: #fff;
+    }
+
+    input[type="checkbox"] {
+        margin-right: 10px;
+    }
+
+    label {
+        font-size: 14px;
+        color: #fff;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    input[type="submit"] {
+        background: #f5b041;
+        color: #000;
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        background: #ffae42;
+        transform: scale(1.1);
+    }
+
+    input[type="submit"]:active {
+        transform: scale(0.9);
+    }
+
+    /* Fade-in Animation for Form */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+<form action="{% url 'password'%}">
+    <h1 >Password generator</h1>
+    <select name="length" >
+        <option value="8">8 Characters</option>
+        <option value="9">9 Characters</option>
+        <option value="10" selected='selected'>10 Characters</option>
+        <option value="11">11 Characters</option>
+        <option value="12">12 Characters</option>
+        <option value="13">13 Characters</option>
+        <option value="14">14 Characters</option>
+        <option value="15">15 Characters</option>
+        <option value="16">16 Characters</option>
+        <option value="17">17 Characters</option>
+    </select>
+    <br>
+    <input type="checkbox" name="UPPERCASE">UPPERCASE 
+    <br>
+    <br>
+    <input type="checkbox" name="SPECIAL CHARACTER">SPECIAL CHARACTER
+    <br>
+    <br>
+    <input type="checkbox" name="NUMBERS">NUMBERS 
+    <br>
+    <br>
+    <input type="submit" value="Generate Password">
+</form>
